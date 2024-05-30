@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Bem-vindo, {{ session['username'] }}!</h2>
+{% if session['role'] == 'admin' %}
+<p>Você tem permissões de administrador.</p>
+{% else %}
+<p>Você tem permissões de operador.</p>
+{% endif %}
+{% endblock %}

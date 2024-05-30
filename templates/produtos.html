@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="animate__animated animate__fadeInDown">Gerenciar Produtos</h2>
+<form method="post" class="animate__animated animate__fadeIn">
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" required>
+    <label for="descricao">Descrição:</label>
+    <input type="text" name="descricao">
+    <label for="preco">Preço:</label>
+    <input type="number" step="0.01" name="preco" required>
+    <label for="quantidade">Quantidade:</label>
+    <input type="number" name="quantidade" required>
+    <button type="submit">Adicionar Produto</button>
+</form>
+<hr>
+<h3 class="animate__animated animate__fadeInUp">Lista de Produtos</h3>
+<table class="animate__animated animate__fadeInUp">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for produto in produtos %}
+        <tr>
+            <td>{{ produto[0] }}</td>
+            <td>{{ produto[1] }}</td>
+            <td>{{ produto[2] }}</td>
+            <td>{{ produto[3] }}</td>
+            <td>{{ produto[4] }}</td>
+            <td>
+                <a href="{{ url_for('editar_produto_view', id=produto[0]) }}">Editar</a>
+                <a href="{{ url_for('remover_produto_view', id=produto[0]) }}">Remover</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="animate__animated animate__fadeInDown">Gerenciar Estoque</h2>
+<form method="post" class="animate__animated animate__fadeIn">
+    <label for="produto_id">Produto:</label>
+    <select name="produto_id" required>
+        {% for produto in produtos %}
+        <option value="{{ produto[0] }}">{{ produto[1] }}</option>
+        {% endfor %}
+    </select>
+    <label for="quantidade">Quantidade:</label>
+    <input type="number" name="quantidade" required>
+    <label for="tipo">Tipo de Movimentação:</label>
+    <select name="tipo" required>
+        <option value="entrada">Entrada</option>
+        <option value="saida">Saída</option>
+    </select>
+    <button type="submit">Registrar</button>
+</form>
+{% endblock %}
